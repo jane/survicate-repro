@@ -9,3 +9,5 @@ If you toggle this line in AppDelegate you can see it works when commented out, 
 ```
 UITableView.appearance().tableHeaderView = .init(frame: .init(x: 0, y: 0, width: 0, height: CGFloat.leastNonzeroMagnitude))
 ```
+
+You also need to set the workspace key, since that is not set on this public repo
