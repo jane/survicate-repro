@@ -1,0 +1,4 @@
+framework module Survicate {
+  header "Survicate-Swift.h"
+  requires objc
+}

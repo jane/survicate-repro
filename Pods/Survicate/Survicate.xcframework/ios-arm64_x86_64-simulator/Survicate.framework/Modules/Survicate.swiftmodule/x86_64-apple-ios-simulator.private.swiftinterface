@@ -1,0 +1,110 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.7.1 (swiftlang-5.7.1.135.3 clang-1400.0.29.51)
+// swift-module-flags: -target x86_64-apple-ios12.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name Survicate
+// swift-module-flags-ignorable: -enable-bare-slash-regex
+import CoreData
+import Foundation
+import Swift
+import UIKit
+import _Concurrency
+import _StringProcessing
+prefix operator ^
+@objc public enum LogLevel : Swift.Int, Swift.CustomStringConvertible, Swift.Comparable {
+  case none = 0
+  case error = 1
+  case info = 2
+  case verbose = 3
+  public var description: Swift.String {
+    get
+  }
+  public static func < (lhs: Survicate.LogLevel, rhs: Survicate.LogLevel) -> Swift.Bool
+  public static func <= (lhs: Survicate.LogLevel, rhs: Survicate.LogLevel) -> Swift.Bool
+  public static func >= (lhs: Survicate.LogLevel, rhs: Survicate.LogLevel) -> Swift.Bool
+  public static func > (lhs: Survicate.LogLevel, rhs: Survicate.LogLevel) -> Swift.Bool
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public protocol SurvicateDelegate {
+  @objc optional func surveyDisplayed(surveyId: Swift.String)
+  @objc optional func questionAnswered(surveyId: Swift.String, questionId: Swift.Int, answer: Survicate.SurvicateAnswer)
+  @objc optional func surveyCompleted(surveyId: Swift.String)
+  @objc optional func surveyClosed(surveyId: Swift.String)
+}
+extension UIKit.UIViewController {
+  @_Concurrency.MainActor(unsafe) public var useWideLayout: Swift.Bool {
+    get
+  }
+}
+@objc @_inheritsConvenienceInitializers final public class SurvicateSdk : ObjectiveC.NSObject {
+  @objc weak final public var delegate: Survicate.SurvicateDelegate? {
+    @objc get
+    @objc set
+  }
+  @objc public static let shared: Survicate.SurvicateSdk
+  @objc override dynamic public init()
+  @objc final public func initialize()
+  @available(swift, deprecated: 1.5.6, message: "This will be removed in the future.")
+  @objc final public func setApiKey(_ key: Swift.String)
+  @objc final public func setWorkspaceKey(_ workspaceKey: Swift.String) throws
+  @objc final public func setUserTrait(withName name: Swift.String, value: Swift.String)
+  @objc final public func setUserTraits(withNamesAndValues namesAndValues: [Swift.String : Swift.String])
+  final public func setUserTrait(_ trait: Survicate.UserTrait)
+  final public func setUserTraits(traits newTraits: [Survicate.UserTrait])
+  @objc final public func setDebuggable(log level: Survicate.LogLevel)
+  @objc final public func enterScreen(value: Swift.String)
+  @objc final public func leaveScreen(value: Swift.String)
+  @objc final public func invokeEvent(name: Swift.String)
+  @objc final public func reset()
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc final public class SurvicateAnswer : ObjectiveC.NSObject {
+  @objc final public var type: Swift.String?
+  @objc final public var id: Foundation.NSNumber?
+  @objc final public var ids: [Foundation.NSNumber]?
+  @objc final public var value: Swift.String?
+  @objc deinit
+}
+extension Survicate.SurvicateAnswer {
+  @objc override final public var description: Swift.String {
+    @objc get
+  }
+}
+public struct UserTrait : Swift.Codable, Swift.Equatable {
+  public init(withName name: Swift.String, value: Swift.String)
+  public static func == (lhs: Survicate.UserTrait, rhs: Survicate.UserTrait) -> Swift.Bool
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+extension Survicate.UserTrait : Swift.CustomStringConvertible {
+  public var description: Swift.String {
+    get
+  }
+}
+extension Survicate.UserTrait {
+  public static func userId(_ value: Swift.String) -> Survicate.UserTrait
+  public static func firstName(_ value: Swift.String) -> Survicate.UserTrait
+  public static func lastName(_ value: Swift.String) -> Survicate.UserTrait
+  public static func email(_ value: Swift.String) -> Survicate.UserTrait
+  public static func organization(_ value: Swift.String) -> Survicate.UserTrait
+  public static func department(_ value: Swift.String) -> Survicate.UserTrait
+  public static func jobTitle(_ value: Swift.String) -> Survicate.UserTrait
+  public static func phone(_ value: Swift.String) -> Survicate.UserTrait
+  public static func website(_ value: Swift.String) -> Survicate.UserTrait
+  public static func addressOne(_ value: Swift.String) -> Survicate.UserTrait
+  public static func addressTwo(_ value: Swift.String) -> Survicate.UserTrait
+  public static func city(_ value: Swift.String) -> Survicate.UserTrait
+  public static func state(_ value: Swift.String) -> Survicate.UserTrait
+  public static func zip(_ value: Swift.String) -> Survicate.UserTrait
+  public static func fax(_ value: Swift.String) -> Survicate.UserTrait
+  public static func annualRevenue(_ value: Swift.String) -> Survicate.UserTrait
+  public static func employees(_ value: Swift.String) -> Survicate.UserTrait
+  public static func industry(_ value: Swift.String) -> Survicate.UserTrait
+}
+extension Swift.KeyedDecodingContainer {
+  public func decode(_ type: Swift.String.Type, forKey key: Swift.KeyedDecodingContainer<K>.Key) throws -> Swift.String
+}
+extension Survicate.LogLevel : Swift.Hashable {}
+extension Survicate.LogLevel : Swift.RawRepresentable {}

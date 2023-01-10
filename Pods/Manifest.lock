@@ -1,0 +1,16 @@
+PODS:
+  - Survicate (1.8.4)
+
+DEPENDENCIES:
+  - Survicate (= 1.8.4)
+
+SPEC REPOS:
+  trunk:
+    - Survicate
+
+SPEC CHECKSUMS:
+  Survicate: 4df9f53db7385083c493bb55178021a7c311ff99
+
+PODFILE CHECKSUM: 01bdbaad3c81da87edb60b88852e10d2bc5c479b
+
+COCOAPODS: 1.11.3
